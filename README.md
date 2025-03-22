@@ -60,7 +60,7 @@ Welcome to the **Kozex AI Voice Cloning Project**! This project is a working pro
 
 ### Prerequisites
 
-- Python 3.7 or higher.
+- Ensure Python version should greater than 3.6 but less than 3.9 installed. _( [install python 3.8 for mac](#install-python38-for-mac) )_.
 - Git (optional, for version control).
 
 ### Steps
@@ -70,12 +70,18 @@ Welcome to the **Kozex AI Voice Cloning Project**! This project is a working pro
    git clone https://github.com/your-username/ProdigalAI_Hackathon.git
    cd ProdigalAI_Hackathon
    ```
-2. **Install Dependencies**:  
-   bash
-   ` pip install -r requirements.txt`
+2. **Install Dependencies**:
 
-3. **Download Pre-trained Models**:  
-   The Coqui TTS and voice cloning models will be automatically downloaded when you run the application for the first time.
+- create a vertual environment using `python -m venv venv_name`  
+  Activate it using:  
+  for mac`source venv_name/bin/activate`  
+  for windows`venv_name\Scripts\activate`
+
+  bash
+  ` pip install -r requirements.txt`
+
+3. **Run the Application**:  
+   `python3 src/app.py`
 
 # Running the Application
 
@@ -145,6 +151,10 @@ Welcome to the **Kozex AI Voice Cloning Project**! This project is a working pro
 | `python -m unittest test_audio_processing.py` |          |
 | `python -m unittest test_tts.py`              |          |
 | `python -m unittest test_voice_cloning.py`    |          |
+
+---
+
+## Install python3.8 for mac
 
 ---
 
