@@ -67,8 +67,8 @@ Welcome to the **Kozex AI Voice Cloning Project**! This project is a working pro
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/ProdigalAI_Hackathon.git
-   cd ProdigalAI_Hackathon
+   git clone https://github.com/epixjayant/kozex.git
+   cd kozex.git
    ```
 2. **Install Dependencies**:  
    bash
