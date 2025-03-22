@@ -5,18 +5,42 @@ document.addEventListener("DOMContentLoaded", function () {
   const sendButton = document.getElementById("sendButton");
   const audioPlayer = document.getElementById("audioPlayer");
   const audioSource = document.getElementById("audioSource");
-
-  // ✅ Toggle Sidebar (Menu Button Working Now)
+  const menuDialog = document.getElementById("menuDialog");
+  const closeBtn = document.querySelector(".close-btn");
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  
+  // ✅ Open Menu Dialog
   menuToggle.addEventListener("click", function () {
-      sidebar.classList.toggle("active");
-  });
+    menuDialog.style.display = "block";
+});
 
-  // ✅ Close sidebar when clicking outside of it
-  document.addEventListener("click", function (event) {
-      if (!sidebar.contains(event.target) && event.target !== menuToggle) {
-          sidebar.classList.remove("active");
-      }
-  });
+// ✅ Close Menu Dialog
+closeBtn.addEventListener("click", function () {
+    menuDialog.style.display = "none";
+});
+
+// ✅ Close Dialog When Clicking Outside
+window.addEventListener("click", function (event) {
+    if (event.target === menuDialog) {
+        menuDialog.style.display = "none";
+    }
+});
+
+// ✅ Dark Mode Toggle (Saves State in Local Storage)
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    darkModeToggle.checked = true;
+}
+
+darkModeToggle.addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode");
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+    }
+});
+});
 
   // ✅ Text to Speech Button Click Event
   sendButton.addEventListener("click", function () {

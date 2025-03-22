@@ -1,3 +1,21 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #27374D; /* Dark Blue */
+  color: white;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #526D82;
+  color: white;
+}
 /* Styling for Text to Speech Section */
 #textToSpeechSection {
   display: flex;
@@ -34,7 +52,7 @@
 
 /* Aesthetic Send Button */
 #sendButton {
-  background-color: #007bff;
+  background-color: #007BFF;
   color: white;
   border: none;
   padding: 12px;
@@ -56,94 +74,135 @@
   transform: scale(1.1);
 }
 
-/* Sidebar (Hidden by Default) */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -260px;
-  width: 250px;
-  height: 100%;
-  background-color: #1b2430;
-  color: white;
-  padding: 20px;
-  transition: 0.3s ease-in-out;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Show Sidebar */
-.sidebar.active {
-  left: 0;
-}
-
 /* Menu Button */
 .menu-btn {
-  background-color: #9db2bf;
-  border: none;
-  padding: 10px 15px;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
+  background-color: #9DB2BF;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
   transition: 0.3s ease-in-out;
 }
 
 .menu-btn:hover {
-  background-color: #dde6ed;
+  background-color: #DDE6ED;
   color: black;
 }
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #27374d; /* Dark Blue */
-  color: white;
-}
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Menu Dialog Box */
+.menu-dialog {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1B2430;
+  color: white;
+  width: 300px;
   padding: 20px;
-  background-color: #526d82;
-  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
-/* Menu Button */
-.menu-btn {
-  background-color: #9db2bf;
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Menu Options */
+.menu-option {
+  display: block;
+  width: 100%;
+  background-color: #007BFF;
+  color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 12px;
+  margin: 10px 0;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  transition: 0.3s;
 }
 
-.menu-btn:hover {
-  background-color: #dde6ed;
-  color: black;
+.menu-option:hover {
+  background-color: #0056b3;
 }
 
-/* Sidebar */
-.sidebar {
-  position: fixed;
+/* Dark Mode Toggle Container */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
   top: 0;
-  left: -260px;
-  width: 250px;
-  height: 100%;
-  background-color: #1b2430;
-  color: white;
-  padding: 20px;
-  transition: 0.3s ease-in-out;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
 }
 
-.sidebar.active {
-  left: 0;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
 }
+
+/* When Checked (Dark Mode) */
+input:checked + .slider {
+  background-color: #FFB830;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .menu-dialog {
+  background-color: #333;
+}
+
 
 /* Main Content */
 .main-content {
@@ -159,7 +218,7 @@ body {
 /* Action Buttons */
 .action-btn {
   display: inline-block;
-  background-color: #ffb830;
+  background-color: #FFB830;
   color: black;
   border: none;
   padding: 12px 25px;
@@ -199,7 +258,7 @@ body {
 }
 
 #ttsEnterBtn {
-  background-color: #ffb830;
+  background-color: #FFB830;
   color: black;
   border: none;
   padding: 12px 25px;
@@ -232,4 +291,52 @@ body {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* When Checked (Dark Mode) */
+input:checked + .slider {
+  background-color: #FFB830;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .header {
+  background-color: #1F1F1F;
+}
+
+
+.dark-mode .slider {
+  background-color: #FFB830;
 }
