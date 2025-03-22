@@ -1,67 +1,48 @@
-// Toggle sections
-const textToSpeechBtn = document.getElementById("textToSpeechBtn");
-const voiceCloningBtn = document.getElementById("voiceCloningBtn");
-const textToSpeechSection = document.getElementById("textToSpeechSection");
-const voiceCloningSection = document.getElementById("voiceCloningSection");
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  const textInput = document.getElementById("textInput");
+  const sendButton = document.getElementById("sendButton");
+  const audioPlayer = document.getElementById("audioPlayer");
+  const audioSource = document.getElementById("audioSource");
 
-textToSpeechBtn.addEventListener("click", () => {
-  textToSpeechSection.classList.remove("hidden");
-  voiceCloningSection.classList.add("hidden");
-});
+  // ✅ Toggle Sidebar (Menu Button Working Now)
+  menuToggle.addEventListener("click", function () {
+      sidebar.classList.toggle("active");
+  });
 
-voiceCloningBtn.addEventListener("click", () => {
-  voiceCloningSection.classList.remove("hidden");
-  textToSpeechSection.classList.add("hidden");
-});
+  // ✅ Close sidebar when clicking outside of it
+  document.addEventListener("click", function (event) {
+      if (!sidebar.contains(event.target) && event.target !== menuToggle) {
+          sidebar.classList.remove("active");
+      }
+  });
 
-// Handle voice input selection
-const voiceInput = document.getElementById("voiceInput");
-const uploadVoiceSample = document.getElementById("uploadVoiceSample");
-const pretrainedVoice = document.getElementById("pretrainedVoice");
+  // ✅ Text to Speech Button Click Event
+  sendButton.addEventListener("click", function () {
+      const text = textInput.value.trim();
+      if (text === "") {
+          alert("Please enter some text.");
+          return;
+      }
 
-voiceInput.addEventListener("change", (e) => {
-  if (e.target.value === "upload") {
-    uploadVoiceSample.classList.remove("hidden");
-    pretrainedVoice.classList.add("hidden");
-  } else {
-    pretrainedVoice.classList.remove("hidden");
-    uploadVoiceSample.classList.add("hidden");
-  }
-});
-
-// Handle voice cloning option
-const voiceCloneOption = document.getElementById("voiceCloneOption");
-const uploadAudioFile = document.getElementById("uploadAudioFile");
-const recordMicrophone = document.getElementById("recordMicrophone");
-
-voiceCloneOption.addEventListener("change", (e) => {
-  if (e.target.value === "upload") {
-    uploadAudioFile.classList.remove("hidden");
-    recordMicrophone.classList.add("hidden");
-  } else {
-    recordMicrophone.classList.remove("hidden");
-    uploadAudioFile.classList.add("hidden");
-  }
-});
-
-// Dark mode toggle
-const darkModeToggle = document.getElementById("darkModeToggle");
-darkModeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
-
-// Placeholder for recording and cloning functionality
-const startRecordingBtn = document.getElementById("startRecordingBtn");
-const stopRecordingBtn = document.getElementById("stopRecordingBtn");
-
-startRecordingBtn.addEventListener("click", () => {
-  startRecordingBtn.classList.add("hidden");
-  stopRecordingBtn.classList.remove("hidden");
-  // Add recording logic here
-});
-
-stopRecordingBtn.addEventListener("click", () => {
-  stopRecordingBtn.classList.add("hidden");
-  startRecordingBtn.classList.remove("hidden");
-  // Add stop recording logic here
+      fetch("http://127.0.0.1:5000/generate_audio", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text: text }),
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.audio_url) {
+              audioSource.src = data.audio_url;
+              audioPlayer.load();
+              audioPlayer.classList.remove("hidden");
+          } else {
+              alert("Error generating audio.");
+          }
+      })
+      .catch(error => console.error("Error:", error));
+  });
 });

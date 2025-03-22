@@ -1,85 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kozex UI</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styling for Text to Speech Section */
+        #textToSpeechSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Text to Speech Heading (Yellow Color) */
+        #textToSpeechSection h2 {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        /* Text Input Box */
+        #textInput {
+            width: 400px;
+            height: 50px;
+            resize: none;
+            font-size: 16px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Text Input Container */
+        .text-input-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Aesthetic Send Button */
+        #sendButton {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hover Effect */
+        #sendButton:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Sidebar (Hidden by Default) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 250px;
+            height: 100%;
+            background-color: #1B2430;
+            color: white;
+            padding: 20px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Show Sidebar */
+        .sidebar.active {
+            left: 0;
+        }
+
+        /* Menu Button */
+        .menu-btn {
+            background-color: #9DB2BF;
+            border: none;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-btn:hover {
+            background-color: #DDE6ED;
+            color: black;
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <!-- Header -->
-      <header class="header" id="header">
-        <h1>Welcome to Kozex</h1>
-      </header>
+        <!-- Header -->
+        <header class="header">
+            <h1>Welcome to Kozex</h1>
+            <button id="menuToggle" class="menu-btn">☰</button>
+        </header>
 
-      <!-- Sidebar Navigation -->
-      <nav class="sidebar">
-        <ul>
-          <li><button id="textToSpeechBtn">Text to Speech</button></li>
-          <li><button id="voiceCloningBtn">Voice Cloning</button></li>
-          <li><button id="darkModeToggle">Dark/Light Mode</button></li>
-        </ul>
-      </nav>
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <ul>
+                <li><button id="textToSpeechBtn"><h3>Text to Speech</h3></button></li>
+                <li><button id="voiceCloningBtn"><h3>Voice Cloning</h3></button></li>
+                <li>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label"><h3>Dark Mode</h3></span>
+                </li>
+            </ul>
+        </nav>
+       
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="welcomeSection">
+                <h4>Welcome to the Kozex AI Voice Cloning Project!</h4>
+                <div id="intro">This project is a working prototype of a voice cloning and text-to-speech (TTS) application.</div>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <div id="textToSpeechSection" class="section hidden">
-          <h2>Text to Speech</h2>
-          <textarea id="textInput" placeholder="Enter text here..."></textarea>
-          <div>
-            <label for="voiceInput">Select Voice Input:</label>
-            <select id="voiceInput">
-              <option value="upload">Upload Voice Sample</option>
-              <option value="pretrained">Select Pre-trained Voice</option>
-            </select>
-          </div>
-          <div id="uploadVoiceSample" class="hidden">
-            <label for="voiceFile">Upload Voice Sample:</label>
-            <input type="file" id="voiceFile" />
-          </div>
-          <div id="pretrainedVoice" class="hidden">
-            <label for="pretrainedVoiceSelect">Choose Pre-trained Voice:</label>
-            <select id="pretrainedVoiceSelect">
-              <option value="voice1">Voice 1</option>
-              <option value="voice2">Voice 2</option>
-            </select>
-          </div>
-          <button id="generateSpeechBtn">Generate Speech</button>
-          <div id="speechOutput" class="hidden">
-            <h3>Speech Generated</h3>
-            <audio controls id="speechAudio"></audio>
-          </div>
-        </div>
+                <!-- Text to Speech Section -->
+                <div id="textToSpeechSection">
+                    <h2>Text to Speech</h2>
+                    <div class="text-input-container">
+                        <textarea id="textInput" placeholder="Enter text here..."></textarea>
+                        <button id="sendButton">➤</button>
+                    </div>
 
-        <div id="voiceCloningSection" class="section hidden">
-          <h2>Voice Cloning</h2>
-          <div>
-            <label for="voiceCloneOption">Upload or Record Voice:</label>
-            <select id="voiceCloneOption">
-              <option value="upload">Upload Audio File</option>
-              <option value="record">Record Using Microphone</option>
-            </select>
-          </div>
-          <div id="uploadAudioFile" class="hidden">
-            <label for="audioFile">Upload Audio File:</label>
-            <input type="file" id="audioFile" />
-          </div>
-          <div id="recordMicrophone" class="hidden">
-            <button id="startRecordingBtn">Start Recording</button>
-            <button id="stopRecordingBtn" class="hidden">Stop Recording</button>
-          </div>
-          <button id="cloneVoiceBtn">Clone Voice</button>
-          <div id="cloningProgress" class="hidden">
-            <p>Cloning in Progress...</p>
-          </div>
-          <div id="clonedVoicePreview" class="hidden">
-            <h3>Cloned Voice Preview</h3>
-            <audio controls id="clonedAudio"></audio>
-          </div>
-        </div>
-      </main>
+                    <!-- Audio Player -->
+                    <audio id="audioPlayer" controls class="hidden">
+                        <source id="audioSource" src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Voice Cloning Button -->
+                <button id="voiceCloningMainBtn" class="action-btn">Voice Cloning</button>
+            </div>
+        </main>
     </div>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
