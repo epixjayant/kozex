@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kozex UI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header" id="header">
+        <h1>Welcome to Kozex</h1>
+      </header>
+
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar">
+        <ul>
+          <li><button id="textToSpeechBtn">Text to Speech</button></li>
+          <li><button id="voiceCloningBtn">Voice Cloning</button></li>
+          <li><button id="darkModeToggle">Dark/Light Mode</button></li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div id="textToSpeechSection" class="section hidden">
+          <h2>Text to Speech</h2>
+          <textarea id="textInput" placeholder="Enter text here..."></textarea>
+          <div>
+            <label for="voiceInput">Select Voice Input:</label>
+            <select id="voiceInput">
+              <option value="upload">Upload Voice Sample</option>
+              <option value="pretrained">Select Pre-trained Voice</option>
+            </select>
+          </div>
+          <div id="uploadVoiceSample" class="hidden">
+            <label for="voiceFile">Upload Voice Sample:</label>
+            <input type="file" id="voiceFile" />
+          </div>
+          <div id="pretrainedVoice" class="hidden">
+            <label for="pretrainedVoiceSelect">Choose Pre-trained Voice:</label>
+            <select id="pretrainedVoiceSelect">
+              <option value="voice1">Voice 1</option>
+              <option value="voice2">Voice 2</option>
+            </select>
+          </div>
+          <button id="generateSpeechBtn">Generate Speech</button>
+          <div id="speechOutput" class="hidden">
+            <h3>Speech Generated</h3>
+            <audio controls id="speechAudio"></audio>
+          </div>
+        </div>
+
+        <div id="voiceCloningSection" class="section hidden">
+          <h2>Voice Cloning</h2>
+          <div>
+            <label for="voiceCloneOption">Upload or Record Voice:</label>
+            <select id="voiceCloneOption">
+              <option value="upload">Upload Audio File</option>
+              <option value="record">Record Using Microphone</option>
+            </select>
+          </div>
+          <div id="uploadAudioFile" class="hidden">
+            <label for="audioFile">Upload Audio File:</label>
+            <input type="file" id="audioFile" />
+          </div>
+          <div id="recordMicrophone" class="hidden">
+            <button id="startRecordingBtn">Start Recording</button>
+            <button id="stopRecordingBtn" class="hidden">Stop Recording</button>
+          </div>
+          <button id="cloneVoiceBtn">Clone Voice</button>
+          <div id="cloningProgress" class="hidden">
+            <p>Cloning in Progress...</p>
+          </div>
+          <div id="clonedVoicePreview" class="hidden">
+            <h3>Cloned Voice Preview</h3>
+            <audio controls id="clonedAudio"></audio>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
