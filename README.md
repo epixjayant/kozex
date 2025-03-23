@@ -1,14 +1,14 @@
 # Kozex AI Voice Cloning Project
 
-Welcome to the **Kozex AI Voice Cloning Project**! This project is a working prototype of a voice cloning and text-to-speech (TTS) application. It allows users to:
+Welcome to the **Kozex AI Voice Cloning Project**! This is a prototype application for voice cloning and text-to-speech (TTS). Users can:
 
-- Convert text to speech using a generic voice.
-- Clone a user's voice and generate speech in their voice.
-- Record or upload audio, and receive the output in a different voice.
+- Convert text to speech using a high-quality generic voice.
+- Clone their voice and generate speech in their voice.
+- Record or upload audio and receive the output in a different voice.
 
 ---
 
-## Table of Contents
+## 📌 Table of Contents
 
 1. [Features](#features)
 2. [Folder Structure](#folder-structure)
@@ -22,89 +22,89 @@ Welcome to the **Kozex AI Voice Cloning Project**! This project is a working pro
 
 ---
 
-## Features
+## 🚀 Features
 
-### Core Functionality
+### 🔹 Core Functionality
 
-- **Text-to-Speech (TTS)**:
-  - Convert any text into speech using a high-quality, generic voice.
-  - Supports multiple pre-trained TTS models (e.g., Tacotron, FastSpeech).
-- **Voice Cloning**:
-  - Clone a user's voice from a short audio sample.
-  - Generate speech in the cloned voice.
-- **User Interface**:
-  - Record audio directly via a microphone.
-  - Upload audio files or text files.
-  - Listen to or download the generated audio.
-
----
-
-## Folder Structure
-
-#### ProdigalAI_Hackathon/
-
-├── README.md # Project overview and instructions  
-├── requirements.txt # Project dependencies  
-├── requirements.txt # Python dependencies  
-├── src/ # Source code  
-│ ├── frontend/ # Frontend code (HTML, CSS, JS)  
-│ ├── backend/ # Backend code (Python, Flask)  
-│ └── tests/ # Unit tests  
-├── samples/ # Sample audio files for testing  
-├── models/ # Pre-trained AI/ML models  
-└── static/ # Static files (uploaded/generated audio)
+- **Text-to-Speech (TTS):**
+  - Converts text into speech using high-quality models like Tacotron, FastSpeech, etc.
+  - Supports multiple pre-trained TTS models.
+- **Voice Cloning:**
+  - Clones a user’s voice from a short audio sample.
+  - Generates speech in the cloned voice.
+- **User-Friendly Interface:**
+  - Record audio via a microphone.
+  - Upload audio or text files.
+  - Listen to or download generated audio.
 
 ---
 
-## Setup Instructions
+## 📂 Folder Structure
+
+```
+ProdigalAI_Hackathon/
+├── README.md            # Project documentation
+├── requirements.txt      # Python dependencies
+├── src/                 # Source code
+│   ├── frontend/        # Frontend (HTML, CSS, JS)
+│   ├── backend/         # Backend (Python, Flask)
+│   ├── tests/           # Unit tests
+├── samples/             # Sample audio files for testing
+├── models/              # Pre-trained AI/ML models
+└── static/              # Static files (uploaded/generated audio)
+```
+
+---
+
+## ⚙️ Setup Instructions
 
 ### Prerequisites
 
-- Ensure Python version should greater than 3.6 but less than 3.9 installed. _( [install python 3.8 for mac](#install-python38-for-mac) )_.
-- Git (optional, for version control).
+- **Python**: Version 3.6 to 3.8 (Recommended: 3.8). [(Install Python 3.8 for Mac)](#install-python38-for-mac)
+- **Git** (optional, for version control).
 
-### Steps
+### Installation Steps
 
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/epixjayant/kozex.git
-   cd kozex.git
+   cd kozex
    ```
-2. **Install Dependencies**:
+2. **Create a Virtual Environment**:
+   ```bash
+   python -m venv venv_name
+   ```
+   - Activate it:
+     - **Mac/Linux:** `source venv_name/bin/activate`
+     - **Windows:** `venv_name\Scripts\activate`
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Run the Application**:
+   ```bash
+   python src/app.py
+   ```
 
-- create a vertual environment using `python -m venv venv_name`  
-  Activate it using:  
-  for mac`source venv_name/bin/activate`  
-  for windows`venv_name\Scripts\activate`
+---
 
-  bash
-  ` pip install -r requirements.txt`
+## ▶️ Running the Application
 
-3. **Run the Application**:  
-   `python3 src/app.py`
+### 🔹 Backend (Flask Server)
 
-# Running the Application
-
-## Backend (Flask Server)
-
-1. Navigate to the `src/backend/` folder:
-
-| **bash**         | **Copy** |
-| ---------------- | -------- |
-| `cd src/backend` |          |
-
+1. Navigate to the backend folder:
+   ```bash
+   cd src/backend
+   ```
 2. Run the Flask server:
+   ```bash
+   python app.py
+   ```
+   - The server starts at `http://127.0.0.1:5000`.
 
-| **bash**        | **Copy** |
-| --------------- | -------- |
-| `python app.py` |          |
+### 🔹 Frontend
 
-- The server will start at `http://127.0.0.1:5000`.
-
-## Frontend
-
-1. Open the `src/frontend/index.html` file in your browser.
-
+1. Open `src/frontend/index.html` in your browser.
 2. Use the UI to:
    - Record audio.
    - Upload audio or text files.
@@ -112,62 +112,81 @@ Welcome to the **Kozex AI Voice Cloning Project**! This project is a working pro
 
 ---
 
-# Usage
+## 📖 Usage
 
-## Text-to-Speech (TTS)
+### 🔹 Text-to-Speech (TTS)
 
 1. Enter text in the input box or upload a text file.
-
 2. Click **Generate Speech**.
-
 3. The system will generate speech using a generic voice and provide a download link.
 
-## Voice Cloning
+### 🔹 Voice Cloning
 
 1. Record or upload an audio file of the target voice.
-
 2. Enter text to be spoken in the cloned voice.
-
 3. Click **Clone Voice**.
-
 4. The system will generate speech in the cloned voice and provide a download link.
 
 ---
 
-# Testing
+## 🧪 Testing
 
-## Unit Tests
+### 🔹 Running Unit Tests
 
-1. Navigate to the `src/tests/` folder:
-
-| **bash**       | **Copy** |
-| -------------- | -------- |
-| `cd src/tests` |          |
-
+1. Navigate to the `tests` folder:
+   ```bash
+   cd src/tests
+   ```
 2. Run the tests:
-
-| **bash**                                      | **Copy** |
-| --------------------------------------------- | -------- |
-| `python -m unittest test_audio_processing.py` |          |
-| `python -m unittest test_tts.py`              |          |
-| `python -m unittest test_voice_cloning.py`    |          |
-
----
-
-## Install python3.8 for mac
+   ```bash
+   python -m unittest test_audio_processing.py
+   python -m unittest test_tts.py
+   python -m unittest test_voice_cloning.py
+   ```
 
 ---
 
-# Dependencies
+## 🖥 Install Python 3.8 for Mac
 
-## Python Libraries
+Run the following command to install Python 3.8 on Mac:
+```bash
+brew install python@3.8
+```
 
-- Flask (for backend server).
-- Coqui TTS (for text-to-speech and voice cloning).
-- NumPy (for numerical operations).
-- SoundFile (for audio file handling).
+---
 
-## Frontend Libraries
+## 📦 Dependencies
 
-- HTML, CSS, JavaScript (for the user interface).
-- Web Audio API (for recording audio).
+### 🔹 Backend (Python Libraries)
+
+- **Flask** – Web framework for the backend.
+- **Coqui TTS** – Text-to-speech and voice cloning.
+- **NumPy** – Numerical operations.
+- **SoundFile** – Handling audio files.
+
+### 🔹 Frontend (Web Technologies)
+
+- **HTML, CSS, JavaScript** – User interface.
+- **Web Audio API** – For recording audio.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`feature-branch`).
+3. Make your changes and commit them.
+4. Push the branch and submit a pull request.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+### 💡 Happy Coding! 🎙️✨
+
